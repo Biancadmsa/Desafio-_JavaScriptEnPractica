@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <h2>
+                Resultado: <span class="resultado"></span>
+            </h2>
+            <div>
+                <div>
+                    <div>
+                        <label for="">Valor 1</label>
+                        <input id="valor1" type="text">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="">Valor 2</label>
+                        <input id="valor2" type="text">
+                    </div>
+                    <br>
+                    <div style="display: flex; margin-left: 15px;">
+                        <button id="btn-sumar" type="button">
+                            Sumar
+                        </button>
+                        <button id="btn-restar" type="button">
+                            Restar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+//Escribe tu código aqui
+
+    //Una función de flecha para guardar 2 parametros
+    const operaciones=(suma,resta)=>{
+      const num1 = document.getElementById('valor1');// constante para guardar el id="valor1"
+      const num2 = document.getElementById('valor2');// constante para guardar el id="valor2"
+      const resultado = document.querySelector('.resultado'); //constante para guardar la class="resultado" 
+      
+      if(num1.value==="" || num2.value===""){
+          alert("Todos los campos deben ser llenados");
+          return;
+      }
+    //convertir numeros a enteros
+      let n1 = parseInt(num1.value);
+      let n2 = parseInt(num2.value);
+
+
+      if (isNaN(n1) || isNaN(n2)) {
+          alert("Los valores ingresados no son válidos");
+          return;
+      }
+
+      let resultadoOperacion;// Guardar el resultado de la operación
+
+      if(suma){
+         resultadoOperacion = n1+n2;  //Resultado de una suma
+      }else{
+         resultadoOperacion = n1-n2;  //Resultado de una resta
+      }
+
+      resultado.innerHTML = `El resultado es ${resultadoOperacion < 0 ? 0 : resultadoOperacion}`;
+      //Daremos el resultado y si es un numero negativo nos imprimira un 0
+    };
+    
+    //Llamaremos a la función
+    document.getElementById('btn-sumar').addEventListener('click',function(){
+        operaciones(true);
+    });
+    document.getElementById('btn-restar').addEventListener('click',function(){
+        operaciones(false);
+    })
+  
+
+    </script>
+</body>
+
+</html>
